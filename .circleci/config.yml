@@ -1,5 +1,8 @@
 version: 2.1
-   
+
+orbs:
+  slack: circleci/slack@4.10.1
+  
 jobs:
   build-frontend:
     docker:
@@ -71,6 +74,23 @@ jobs:
             cd backend
             npm install
             npm run test
+      - slack/notify:
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": "*This is a text notification*",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+          event: always
       
   scan-frontend:
     docker:
@@ -91,6 +111,14 @@ jobs:
             npm audit fix --audit-level=critical --force
             # If the "npm audit fix" command above could not fix all critical vulnerabilities, try “npm audit fix --force” again
             npm audit --audit-level=critical
+      - slack/notify:
+          event: fail
+          mentions: '@EngineeringTeam'
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
+
 
   scan-backend:
     docker:
@@ -125,4 +153,4 @@ workflows:
       - scan-frontend:
           requires: [build-frontend]
       - scan-backend:
-          requires: [build-backend]
+          requires: [build-backend] 
