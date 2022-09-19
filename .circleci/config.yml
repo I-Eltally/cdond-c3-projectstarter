@@ -116,9 +116,22 @@ jobs:
             # If the "npm audit fix" command above could not fix all critical vulnerabilities, try “npm audit fix --force” again
             npm audit --audit-level=critical
       - slack/notify:
-          channel: C042H7FPEKE
-          event: pass
-          template: success_tagged_deploy_1
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": "*This is a text notification*",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+          event: always
 workflows:
   default:
     jobs:
@@ -133,3 +146,4 @@ workflows:
       - scan-backend:
           requires: [build-backend]
           context: slack-secrets
+          
