@@ -138,7 +138,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install tar utility
+          name: Install tar ang gzip
           command: |
             yum install -y tar gzip
       - run:
