@@ -187,7 +187,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install tar ang gzip
+          name: Install tar and gzip
           command: |
             yum install -y tar gzip
       - run:
@@ -341,8 +341,7 @@ jobs:
             npm run build
             cd ..
             tar -C backend -czvf artifact.tar.gz .
-            cd ..
-            cp backend/artifact.tar.gz .circleci/ansible/roles/deploy/files          
+            cp artifact.tar.gz .circleci/ansible/roles/deploy/files          
       - run:
           name: Deploy backend
           command: |
