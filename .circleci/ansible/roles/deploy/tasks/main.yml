@@ -13,6 +13,8 @@
   - name: "Installing Node Dependencies"
     shell: |
       cd /home/ubuntu/
+      curl -fsSL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+      sudo apt install nodejs -y
       npm i     
   - name: "Executing Node app with PM2"
     shell: |
