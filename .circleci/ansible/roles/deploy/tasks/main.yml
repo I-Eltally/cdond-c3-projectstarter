@@ -2,7 +2,7 @@
   - name: Copy files
     become: true
     copy:
-      src: ~/project/artifact.tar.gz
+      src: /root/project/artifact.tar.gz
       dest: /home/ubuntu/artifact.tar.gz
   - name: Unarchive
     become: true
@@ -12,10 +12,10 @@
   - name: "run server"
     become: true
     shell : |
-        sudo cd /home/ubuntu/
-        sudo npm install
-        sudo pm2 stop default
-        sudo pm2 start npm -- start
+        cd /home/ubuntu/
+        npm install
+        pm2 stop default
+        pm2 start npm -- start
     environment:
       ENVIRONMENT: production
       TYPEORM_CONNECTION: "{{ lookup('env', 'TYPEORM_CONNECTION') }}"
