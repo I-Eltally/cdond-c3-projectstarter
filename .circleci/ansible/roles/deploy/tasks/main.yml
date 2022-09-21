@@ -13,7 +13,8 @@
     become: true
     shell : |
         cd /home/ubuntu/
-        sudo npm i -g pm2
+        #npm install
+        npm audit fix && npm run build
         pm2 stop default
         pm2 start npm -- start
     environment:
