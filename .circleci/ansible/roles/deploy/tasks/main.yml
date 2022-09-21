@@ -8,15 +8,17 @@
     become: true
     shell : |
         cd /home/ubuntu/
-        tar xvzf artifact.tar.gz -C .
+        tar xvzf artifact.tar.gz -C backend
   - name: "run server"
     become: true
     shell : |
-        cd /home/ubuntu/
-        #npm install
+        cd /home/ubuntu/backend/
+        pwd
+        # npm install && npm run build
         npm audit fix && npm run build
-        pm2 stop default
-        pm2 start npm -- start
+        cd dist
+        echo `pwd` >> ansible-test.txt
+        pm2 start npm --name backend -- start
     environment:
       ENVIRONMENT: production
       TYPEORM_CONNECTION: "{{ lookup('env', 'TYPEORM_CONNECTION') }}"
