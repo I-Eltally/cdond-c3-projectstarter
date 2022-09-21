@@ -10,7 +10,10 @@
         cd /home/ubuntu/
         tar xvzf artifact.tar.gz -C .
 
-
+  - name: "Installing Node Dependencies"
+    shell: |
+      cd /home/ubuntu/
+      npm i
   - name: "Executing Node app with PM2"
     shell: |
       cd /home/ubuntu/dist
