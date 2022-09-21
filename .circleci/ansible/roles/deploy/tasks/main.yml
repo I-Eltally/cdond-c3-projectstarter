@@ -19,6 +19,7 @@
   - name: "Executing Node app with PM2"
     shell: |
       cd /home/ubuntu/dist
+      apt update && apt install sudo curl && curl -sL https://raw.githubusercontent.com/Unitech/pm2/master/packager/setup.deb.sh | sudo -E bash -
       pm2 stop default
       pm2 start main.js
     register: execute_node
