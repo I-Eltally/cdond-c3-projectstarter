@@ -13,7 +13,7 @@
   - name: "Installing Node Dependencies"
     shell: |
       cd /home/ubuntu/
-        npm i     
+      npm i     
   - name: "Executing Node app with PM2"
     shell: |
       cd /home/ubuntu/dist
