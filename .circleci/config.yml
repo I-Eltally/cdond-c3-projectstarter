@@ -342,13 +342,10 @@ jobs:
       - restore_cache:
           keys: [backend-deps]
       - run:
-          name: Install dependencies
+          name: Deploy backend
           command: |
             cd backend
             npm install
-      - run:
-          name: Deploy backend
-          command: |
             npm run build
             cd ..
             tar -C backend -czvf artifact.tar.gz .
