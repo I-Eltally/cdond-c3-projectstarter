@@ -11,6 +11,7 @@
         tar xvzf artifact.tar.gz -C .
   - name: "run server"
     become: true
+    become_method: sudo
     shell : |
         cd /home/ubuntu/
         npm install
