@@ -4,16 +4,16 @@ A public git repository with my project code
 
 2- URL02
 Evidence of deployed and functioning front-end application in an S3 bucket
-URL02:http://udapeople-f3f78a1.s3-website-us-east-1.amazonaws.com/
+URL02:  http://udapeople-058ccbf.s3-website-us-east-1.amazonaws.com/
 
 3- URL03
 Evidence of deployed and functioning front-end application in CloudFront
-URL03:http://d37jkqdfcaq9km.cloudfront.net/
+URL03:  https://d1bbcl09515qx3.cloudfront.net
 
 4- URL04
 Evidence of healthy back-end application
-URL04:http://44.202.114.204:3030/api/status/
+URL04:  http://34.205.17.155:3030/api/status/
 
 5- URL05
 Evidence of Prometheus Server
-URL05: http://ec2-18-212-71-69.compute-1.amazonaws.com:9090
+URL05: http://ec2-44-211-139-162.compute-1.amazonaws.com:9090/targets
